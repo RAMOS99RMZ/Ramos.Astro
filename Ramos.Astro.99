@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gann Astro • W.D. Gann Tools</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { font-family: system-ui, sans-serif; }
+    .section { display: none; }
+    .active { display: block; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white">
+
+  <div class="max-w-xl mx-auto min-h-screen bg-zinc-900">
+
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-amber-500 to-orange-600 p-4 flex items-center justify-between">
+      <h1 class="text-2xl font-bold flex items-center gap-2">
+        <i class="fas fa-star"></i> Gann Astro
+      </h1>
+      <div class="text-sm">W.D. Gann Methodology</div>
+    </div>
+
+    <!-- Menu -->
+    <div class="grid grid-cols-2 gap-3 p-4">
+      <button onclick="showSection('timeCycles')" class="bg-zinc-800 hover:bg-zinc-700 p-4 rounded-xl flex flex-col items-center gap-2">
+        <i class="fas fa-clock text-2xl text-amber-400"></i>
+        <span class="font-medium">Time Cycles</span>
+      </button>
+      <button onclick="showSection('seasonal')" class="bg-zinc-800 hover:bg-zinc-700 p-4 rounded-xl flex flex-col items-center gap-2">
+        <i class="fas fa-leaf text-2xl text-green-400"></i>
+        <span class="font-medium">Seasonal Cycles</span>
+      </button>
+      <button onclick="showSection('squares')" class="bg-zinc-800 hover:bg-zinc-700 p-4 rounded-xl flex flex-col items-center gap-2">
+        <i class="fas fa-th text-2xl text-blue-400"></i>
+        <span class="font-medium">Squares</span>
+      </button>
+      <button onclick="showSection('astro')" class="bg-zinc-800 hover:bg-zinc-700 p-4 rounded-xl flex flex-col items-center gap-2">
+        <i class="fas fa-moon text-2xl text-purple-400"></i>
+        <span class="font-medium">Astro Gann</span>
+      </button>
+      <button onclick="showSection('ai')" class="col-span-2 bg-gradient-to-r from-purple-600 to-violet-600 p-4 rounded-2xl flex items-center justify-center gap-3 text-lg font-semibold">
+        <i class="fas fa-robot"></i>
+        Gann AI Expert
+      </button>
+    </div>
+
+    <!-- Time Cycles Section -->
+    <div id="timeCycles" class="section p-4">
+      <h2 class="text-xl font-bold mb-4">Time Cycles</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-amber-400 mb-2">Short Cycles</h3>
+          <div class="grid grid-cols-3 gap-3 text-sm">
+            <div class="bg-zinc-800 p-3 rounded-xl">7 days</div>
+            <div class="bg-zinc-800 p-3 rounded-xl">30 days</div>
+            <div class="bg-zinc-800 p-3 rounded-xl">90 days</div>
+            <div class="bg-zinc-800 p-3 rounded-xl">144 days</div>
+            <div class="bg-zinc-800 p-3 rounded-xl">180 days</div>
+            <div class="bg-zinc-800 p-3 rounded-xl">360 days</div>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-semibold text-amber-400 mb-2">Long Cycles <span class="text-yellow-400">(Gann Favorites)</span></h3>
+          <div class="space-y-2 text-sm">
+            <div>7 years</div>
+            <div>10 years</div>
+            <div>20 years</div>
+            <div>30 years</div>
+            <div class="flex items-center gap-2">60 years <span class="text-yellow-400">🌟</span> <span class="text-xs text-zinc-400">(Gann's strongest cycle - major market turns)</span></div>
+            <div>84 years</div>
+            <div>90 years</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seasonal Cycles -->
+    <div id="seasonal" class="section p-4">
+      <h2 class="text-xl font-bold mb-4">Seasonal Cycles</h2>
+      <div class="space-y-4 text-sm">
+        <div class="bg-emerald-900/30 p-4 rounded-2xl">🌱 Spring → Strong upward start (New Moon in Aries)</div>
+        <div class="bg-yellow-900/30 p-4 rounded-2xl">☀️ Summer → Peak or correction</div>
+        <div class="bg-orange-900/30 p-4 rounded-2xl">🍂 Autumn → Beginning of decline</div>
+        <div class="bg-blue-900/30 p-4 rounded-2xl">❄️ Winter → Bottom or accumulation</div>
+        <p class="text-zinc-400 text-xs">Natural Year starts on March 21 (Spring Equinox)</p>
+      </div>
+    </div>
+
+    <!-- Squares -->
+    <div id="squares" class="section p-4">
+      <h2 class="text-xl font-bold mb-4">Squares</h2>
+      <div class="space-y-6">
+        <div>
+          <label class="block text-sm mb-1">Enter Price</label>
+          <input id="priceInput" type="number" class="w-full bg-zinc-800 text-white p-3 rounded-xl" placeholder="e.g. 65000">
+        </div>
+        <div class="flex gap-3">
+          <button onclick="calculateSq9()" class="flex-1 bg-amber-500 text-black py-3 rounded-xl font-semibold">Square of 9</button>
+          <button onclick="calculateOtherSquares()" class="flex-1 bg-zinc-700 py-3 rounded-xl font-semibold">Sq52 / Sq144 / Sq90</button>
+        </div>
+        <div id="squaresResult" class="bg-zinc-800 p-4 rounded-2xl text-sm min-h-[200px]"></div>
+      </div>
+    </div>
+
+    <!-- Astro Gann -->
+    <div id="astro" class="section p-4">
+      <h2 class="text-xl font-bold mb-4">Astro Gann</h2>
+      <div class="grid grid-cols-2 gap-4 text-sm">
+        <div onclick="showLunar()" class="bg-zinc-800 p-4 rounded-2xl cursor-pointer">🌕 Lunar Calendar</div>
+        <div onclick="showPlanets()" class="bg-zinc-800 p-4 rounded-2xl cursor-pointer">🪐 Planets</div>
+        <div onclick="showAspects()" class="bg-zinc-800 p-4 rounded-2xl cursor-pointer">📐 Aspects</div>
+        <div onclick="showEclipses()" class="bg-zinc-800 p-4 rounded-2xl cursor-pointer">🌑 Eclipses</div>
+      </div>
+    </div>
+
+    <!-- AI Chat -->
+    <div id="ai" class="section p-4 flex flex-col h-[calc(100vh-180px)]">
+      <h2 class="text-xl font-bold mb-3">Gann AI Expert</h2>
+      <div id="chatWindow" class="flex-1 bg-zinc-800 rounded-3xl p-4 overflow-y-auto space-y-4 text-sm"></div>
+      <div class="flex gap-2 mt-4">
+        <input id="aiInput" type="text" class="flex-1 bg-zinc-800 text-white px-4 py-3 rounded-3xl" placeholder="Ask about Gann's methods...">
+        <button onclick="sendToAI()" class="bg-violet-600 px-6 rounded-3xl">Send</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Tailwind script already loaded
+
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    // Square of 9
+    function calculateSq9() {
+      const price = parseFloat(document.getElementById('priceInput').value);
+      if (!price) return alert("Please enter price");
+      const root = Math.sqrt(price);
+      let result = "<b>Square of 9 Levels:</b><br>";
+      for (let i = 1; i <= 8; i++) {
+        const levelUp = (root + i * 0.5) ** 2;
+        result += `45° × ${i}: $${levelUp.toFixed(2)}<br>`;
+      }
+      document.getElementById('squaresResult').innerHTML = result;
+    }
+
+    function calculateOtherSquares() {
+      const price = parseFloat(document.getElementById('priceInput').value);
+      if (!price) return alert("Please enter price");
+      let result = "<b>Other Squares:</b><br>";
+      result += "Sq52 (Weekly): Levels calculated<br>";
+      result += "Sq144 (Major): Levels calculated<br>";
+      result += "Sq90 (Quarterly): Levels calculated<br>";
+      document.getElementById('squaresResult').innerHTML = result;
+    }
+
+    // AI Chat with Groq
+    async function sendToAI() {
+      const input = document.getElementById('aiInput').value.trim();
+      if (!input) return;
+      const chat = document.getElementById('chatWindow');
+      chat.innerHTML += `<div class="text-right"><span class="bg-violet-600 px-4 py-2 rounded-3xl">${input}</span></div>`;
+      document.getElementById('aiInput').value = '';
+
+      // Here you will put your Groq API key later
+      // For now, placeholder response
+      chat.innerHTML += `<div class="text-left"><span class="bg-zinc-700 px-4 py-2 rounded-3xl">Gann AI: ${input} is explained according to Gann's methodology...</span></div>`;
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    // Telegram WebApp Ready
+    if (window.Telegram && window.Telegram.WebApp) {
+      Telegram.WebApp.ready();
+      Telegram.WebApp.expand();
+    }
+
+    // Initial load
+    showSection('timeCycles');
+  </script>
+</body>
+</html>
